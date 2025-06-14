@@ -1,0 +1,35 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container my-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold display-6">🚀 Upcoming Events</h2>
+    <p class="text-muted">Stay informed and be ready for what's next!</p>
+  </div>
+
+  <% if (events.length > 0) { %>
+    <div class="row g-4">
+      <% events.forEach(event => { %>
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-primary"><%= event.title %></h5>
+              <h6 class="card-subtitle mb-2 text-muted">📍 <%= event.venue %></h6>
+              <p class="card-text text-dark mb-3"><%= event.subject.substring(0, 100) %>...</p>
+              <p class="text-muted small mb-3">📅 <%= event.date.toDateString() %></p>
+
+              <% if (currStudent.roles.includes("admin")) { %>
+                <form action="/admin/dashboard/events/<%= event._id %>?_method=DELETE" method="POST" class="d-inline">
+                  <button class="btn btn-sm btn-outline-danger">Delete</button>
+                </form>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <div class="text-center text-muted">
+      <p>No upcoming events found.</p>
+    </div>
+  <% } %>
+</div>

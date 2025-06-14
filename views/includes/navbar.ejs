@@ -1,0 +1,90 @@
+<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom shadow-sm sticky-top">
+  <div class="container">
+    <!-- 🌵 Brand Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <i class="fa-solid fa-hat-cowboy me-2 text-primary"></i>
+      <span class="fw-bold text-primary">BCA_TECH_TEAM</span>
+    </a>
+
+    <!-- ☰ Mobile Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- 🚀 Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto align-items-center">
+
+        <li class="nav-item">
+          <a class="nav-link px-3" href="/">🏠 Home</a>
+        </li>
+
+        <!-- 🎉 Events -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle px-3" href="#" id="eventsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            🎪 Events
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="eventsDropdown">
+            <li><a class="dropdown-item" href="/events-upcoming">🚧 Upcoming Events</a></li>
+            <li><a class="dropdown-item" href="/events-registration">📝 Register Here</a></li>
+            <li><a class="dropdown-item" href="/events-past">📸 Past Glories</a></li>
+          </ul>
+        </li>
+
+        <!-- 📚 Learning Resources -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle px-3" href="#" id="learningDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            📘 Learn Stuff
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="learningDropdown">
+            <li><a class="dropdown-item" href="/learning-resource/bcafirst">👶 BCA 1st Year</a></li>
+            <li><a class="dropdown-item" href="/learning-resource/bcasecond">🧑 BCA 2nd Year</a></li>
+            <li><a class="dropdown-item" href="/learning-resource/bcathird">🧓 BCA 3rd Year</a></li>
+          </ul>
+        </li>
+
+        <!-- 🧑‍🎓 Student Corner -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle px-3" href="#" id="studentDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            🧑‍🎓 Student Corner
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="studentDropdown">
+            <li><a class="dropdown-item" href="#">🎓 Student Zone</a></li>
+            <% if (!currStudent) { %>
+              <li><a class="dropdown-item" href="/signup">🆕 Sign-Up</a></li>
+              <li><a class="dropdown-item" href="/login">🔑 Login</a></li>
+            <% } else if (!currStudent.roles.includes("admin") && (currStudent.id))  { %>
+              <li><a class="dropdown-item" href="/student-dashboard/<%= currStudent._id %>">📂 Dashboard</a></li>
+              <li><a class="dropdown-item" href="/logout">🚪 Logout</a></li>
+            <% } %>
+          </ul>
+        </li>
+
+        <!-- 🛠 Admin Section -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle px-3" href="#" id="memberDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            🛠 Member
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="memberDropdown">
+            <li><a class="dropdown-item" href="#">👮 Administrative Area</a></li>
+            <% if (!currStudent) { %>
+              <li><a class="dropdown-item" href="/admin/login">🔐 Member Login</a></li>
+            <% } else if (currStudent.roles.includes("admin")) { %>
+              <li><a class="dropdown-item" href="/admin/dashboard">📊 Dashboard</a></li>
+              <li><a class="dropdown-item" href="/admin/logout">🚪 Logout</a></li>
+            <% } %>
+          </ul>
+        </li>
+
+        <!-- 📖 About & ✉️ Contact -->
+        <li class="nav-item">
+          <a class="nav-link px-3" href="/about">📖 About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3" href="/contact">✉️ Contact Us</a>
+        </li>
+      </ul> 
+    </div>
+  </div>
+</nav>

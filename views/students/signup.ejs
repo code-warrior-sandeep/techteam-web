@@ -1,0 +1,89 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-lg border-0 rounded-4 bg-light">
+        <div class="card-body p-4">
+          <h2 class="card-title text-center mb-4 fw-bold text-primary">
+            📝 Student Sign Up 🚀
+          </h2>
+
+          <form action="/signup" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+            
+            <!-- Name -->
+            <div class="mb-3">
+              <label for="name" class="form-label">👤 Full Name</label>
+              <input type="text" name="name" id="name" class="form-control" required placeholder="e.g., Aryan Kumar" />
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">provide your name</div>
+            </div>
+
+            <!-- Username -->
+            <div class="mb-3">
+              <label for="username" class="form-label">🆔 Username (Provided by Tech Team) </label>
+              <input type="text" name="username" id="username" class="form-control" required placeholder="e.g., BCA2026..." />
+              <div class="invalid-feedback">please!!</div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">📧 Email</label>
+              <input type="email" name="email" id="email" class="form-control" required placeholder="you@example.com" />
+              <div class="valid-feedback">Such As Great Email</div>
+              <div class="invalid-feedback">please Enter </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">🔒 Password</label>
+              <input type="password" name="password" id="password" class="form-control" required placeholder="Shhh... keep it secret!" />
+              <div class="valid-feedback">I don't know!! but You must remember</div>
+              <div class="invalid-feedback">please fill!!</div>
+            </div>
+
+            <!-- Roll Number -->
+            <div class="mb-3">
+              <label for="rollNumber" class="form-label">🎓 Roll Number</label>
+              <input type="text" name="rollNumber" id="rollNumber" class="form-control" required placeholder="e.g., 25140...." />
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">ohh! please</div>
+            </div>
+
+            <!-- Semester -->
+            <div class="mb-3">
+              <label for="semester" class="form-label">📚 Semester</label>
+              <select name="semester" id="semester" class="form-select" required>
+                <option value="" selected disabled>Pick one 🎯</option>
+                <option value="1st">1️⃣ 1st Semester</option>
+                <option value="2nd">2️⃣ 2nd Semester</option>
+                <option value="3rd">3️⃣ 3rd Semester</option>
+                <option value="4th">4️⃣ 4th Semester</option>
+                <option value="5th">5️⃣ 5th Semester</option>
+                <option value="6th">6️⃣ 6th Semester</option>
+              </select>
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+
+            <!-- Image -->
+            <div class="mb-3">
+              <label for="image" class="form-label">🖼️ Upload Image <small class="text-muted">(max: 250kb)</small></label>
+              <input type="file" class="form-control" name="image" />
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-success w-100 mt-3">
+              🚀 Create My Account
+            </button>
+
+            <!-- Login Link -->
+            <p class="text-center mt-3 text-muted small">
+              🧐 Already have an account? <a href="/login" class="text-decoration-none">Login here</a> 🔑
+            </p>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

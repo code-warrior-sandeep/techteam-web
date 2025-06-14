@@ -1,0 +1,61 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+          
+          <!-- Title with Emoji -->
+          <h2 class="card-title text-center mb-4 fw-bold text-danger">
+            🛡️ Admin Login Panel
+          </h2>
+          <p class="text-center text-muted mb-4">
+            Authorized Personnel Only 👀🚨
+          </p>
+
+          <form action="/admin/login" method="POST" class="needs-validation" novalidate>
+
+            <!-- UID Input -->
+            <div class="mb-3">
+              <label for="username" class="form-label">👨‍💼 Admin UID</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                class="form-control"
+                placeholder="Enter your secret UID 🤫"
+                required
+              />
+            </div>
+
+            <!-- Password Input -->
+            <div class="mb-3">
+              <label for="password" class="form-label">🔐 Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="form-control"
+                placeholder="Don't tell anyone! 🙊"
+                required
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-danger w-100 mt-3">
+              🚀 Enter the Control Room
+            </button>
+
+            <!-- Just for Fun -->
+            <div class="text-center mt-3 text-muted small">
+              <em>💡 Pro Tip:</em> Password is not "1234"... hopefully 😅
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

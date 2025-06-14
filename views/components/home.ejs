@@ -1,0 +1,133 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container my-5">
+
+  <!-- 🧠 Tech Team Header Card -->
+  <div class="card text-center shadow-sm mb-4 border-0 rounded-4 bg-white">
+    <div class="card-body py-4 px-3">
+      <h2 class="fw-bold text-primary mb-2" style="font-size: 2rem;">🚀 BCA_Tech_Team</h2>
+      <p class="text-muted fst-italic mb-3" style="font-size: 1.1rem;">
+        “Code together, break things together, fix it before anyone notices.” 💻🔥
+      </p>
+      <a href="/about" class="btn btn-outline-primary px-4 py-2 rounded-pill shadow-sm">👀 Meet the Legends</a>
+    </div>
+  </div>
+
+  <!-- 👨‍💻 Main Grid Section -->
+  <div class="row g-4">
+
+    <!-- ✨ Left: Quotes -->
+    <div class="col-lg-3">
+      <div class="p-3 rounded-4 shadow-sm quote-box bg-white">
+        <h6 class="fw-bold text-success mb-3 border-bottom pb-2 text-uppercase" style="letter-spacing: 1px;">🌟 Power Quotes</h6>
+
+        <% const quotes = [
+          { text: "Those who keep trying never truly fail.", author: "Harivansh Rai Bachchan" },
+          { text: "Success doesn’t come overnight, but it comes to those who never quit.", author: "Anonymous" },
+          { text: "Be the change that you wish to see in the world.", author: "Mahatma Gandhi" },
+        ]; %>
+
+        <% quotes.forEach(q => { %>
+          <div class="quote mb-3 px-2">
+            <p class="mb-1 fst-italic text-dark-emphasis" style="font-size: 0.95rem;">"<%= q.text %>"</p>
+            <small class="text-muted d-block text-end">— <%= q.author %></small>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <!-- 🎡 Center: Carousel -->
+    <div class="col-lg-6">
+      <div id="eventCarousel" class="carousel slide shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% const events = [
+            { title: "🏆 Prize Distribution", img: "/images/prize.jpg" },
+            { title: "📚 Book Reading", img: "/images/book.jpg" },
+            { title: "💃 Aagaaz 3.O", img: "/images/dance.jpg" },
+            { title: "🧠 Live Meeting", img: "/images/session.jpg" }
+          ]; %>
+
+          <% events.forEach((event, index) => { %>
+            <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+              <img src="<%= event.img %>" class="d-block w-100" alt="<%= event.title %>">
+              <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 px-3 py-2">
+                <h5 class="text-white fw-semibold"><%= event.title %></h5>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 📅 Right: Dates -->
+    <div class="col-lg-3">
+      <div class="p-3 rounded-4 shadow-sm bg-white h-100">
+        <h6 class="fw-bold text-secondary mb-3 border-bottom pb-2 text-uppercase">📅 Mark Your Calendars</h6>
+        <% if (dates && dates.length > 0) { %>
+          <ul class="list-group">
+            <% dates.forEach(date => { %>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div>
+                  <div class="fw-bold"><%= date.title %></div>
+                  <small class="text-muted">
+                    <%= new Date(date.date).toLocaleDateString('en-GB', {
+                      day: '2-digit',
+                      month: 'long',
+                      year: 'numeric'
+                    }) %>
+                  </small>
+                </div>
+                <span class="badge <%= date.labelColor %> rounded-circle mt-2" style="width: 16px; height: 16px;">&nbsp;</span>
+              </li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <p class="text-muted fst-italic">🤷‍♂️ No dates? Time doesn’t exist apparently.</p>
+        <% } %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 🔧 Styles -->
+<style>
+  .quote-box {
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+    border: 1px solid #dee2e6;
+  }
+
+  .quote p {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .quote:hover p {
+    transform: scale(1.03);
+    color: #198754;
+  }
+
+  .carousel-inner img {
+    object-fit: cover;
+    height: 340px;
+  }
+
+  @media (max-width: 768px) {
+    .quote-box {
+      margin-top: 2rem;
+    }
+
+    .carousel-inner img {
+      height: 200px;
+    }
+
+    .card-body.py-4 {
+      padding: 1.5rem 1rem !important;
+    }
+  }
+</style>

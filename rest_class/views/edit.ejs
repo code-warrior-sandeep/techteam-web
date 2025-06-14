@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+
+    <div class="edit-post-container">
+        <h2 class="edit-post-title">Edit Your Post</h2>
+
+        <% if (post) { %>
+            <p class="post-id">Post ID: <%= post.id %></p>
+            <h3 class="username">Username: <%= post.username %></h3>
+
+            <form method="POST" action="/posts/<%= post.id %>?_method=PATCH" class="edit-post-form">
+                <label for="content" class="form-label">Content:</label>
+                <textarea rows="10" cols="40" name="content" id="content" class="textarea-box"><%= post.content %></textarea>
+
+                <button class="btn btn-submit-post">Submit</button>
+            </form>
+        <% } else { %>
+            <p class="no-post">No post found</p>
+        <% } %>
+    </div>
+
+</body>
+</html>

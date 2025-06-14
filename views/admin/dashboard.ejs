@@ -1,0 +1,106 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container my-5">
+  <h2 class="mb-4 fw-bold text-center text-danger display-6">🛠️ Admin Control Panel 🤖</h2>
+
+  <!-- Navigation Tabs -->
+  <ul class="nav nav-tabs mb-4 rounded-pill shadow-sm bg-light p-2" id="adminTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active fw-semibold text-dark" id="dates-tab" data-bs-toggle="tab" href="#dates" role="tab">📅 Important Dates</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fw-semibold text-dark" id="events-tab" data-bs-toggle="tab" href="#events" role="tab">🎉 Upcoming Events</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fw-semibold text-dark" id="enrollment" data-bs-toggle="tab" href="#feedenrollment" role="tab">🧾 Username Feed</a>
+    </li>
+  </ul>
+
+  <!-- Tab Content -->
+  <div class="tab-content" id="adminTabContent">
+    
+    <!-- Important Dates Tab -->
+    <div class="tab-pane fade show active" id="dates" role="tabpanel">
+      <h4 class="mb-3 text-primary fw-bold">🗓️ Schedule Some </h4>
+      <form action="/admin/dashboard/date/add" method="POST" class="row g-2 mb-3">
+        <div class="col-md-4">
+          <input name="title" class="form-control border border-primary" placeholder="What's happening?" required />
+        </div>
+        <div class="col-md-3">
+          <input name="date" type="date" class="form-control border border-info" required />
+        </div>
+        <div class="col-md-3">
+          <select name="labelColor" class="form-select border border-success">
+            <option value="bg-primary">💙 Blue</option>
+            <option value="bg-success">💚 Green</option>
+            <option value="bg-warning">💛 Yellow</option>
+            <option value="bg-danger">❤️ Red</option>
+            <option value="bg-secondary">🖤 Gray</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-dark w-100">🚀 Add</button>
+        </div>
+      </form>
+
+      <ul class="list-group shadow-sm">
+        <% dates.forEach(date => { %>
+        <li class="list-group-item d-flex justify-content-between align-items-center bg-light border-0 rounded-3 mb-2 shadow-sm">
+          <form class="d-flex flex-wrap gap-2" method="POST">
+            <input name="title" class="form-control" value="<%= date.title %>" required />
+            <input name="date" type="date" class="form-control" value="<%= date.date.toISOString().split('T')[0] %>" required />
+            <input name="labelColor" class="form-control" value="<%= date.labelColor %>" />
+          </form>
+          <form action="/admin/dashboard/date/<%= date._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-outline-danger">❌ Delete</button>
+          </form>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <!-- Upcoming Events Tab -->
+    <div class="tab-pane fade" id="events" role="tabpanel">
+      <h4 class="mb-3 text-success fw-bold">🎊 Let's Plan a Party...</h4>
+
+      <form method="POST" action="/admin/dashboard" class="row g-3 mb-4">
+        <div class="col-md-4">
+          <input name="title" class="form-control" placeholder="🎯 Event Title" required />
+        </div>
+        <div class="col-md-3">
+          <input name="venue" class="form-control" placeholder="📍 Venue" required />
+        </div>
+        <div class="col-md-5">
+          <textarea name="subject" class="form-control" placeholder="💬 What’s it about?" required></textarea>
+        </div>
+        <div class="col-md-3">
+          <input name="date" type="date" class="form-control" required />
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-success w-100">📢 Add Event</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Enrollment Feed Tab -->
+    <div class="tab-pane fade" id="feedenrollment" role="tabpanel">
+      <h4 class="mb-3 text-warning fw-bold">📥 Add New Username</h4>
+
+      <form method="POST" action="/admin/dashboard/add" class="row g-3 mb-4">
+        <div class="col-md-4">
+          <input name="username" class="form-control" placeholder="👤 Username" required />
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-success w-100">➕ Enroll</button>
+        </div>
+      </form>
+
+      <form action="/admin/dashboard/show">
+        <div class="col-md-2">
+          <button class="btn btn-danger w-100">📜 Show All</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
