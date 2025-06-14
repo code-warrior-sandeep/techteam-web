@@ -18,9 +18,9 @@ module.exports.upcoming = async (req, res) => {
     }
 }
 
-module.exports.past =  (req, res) => {
+module.exports.eventRegistration =  (req, res) => {
     res.render("events/registration.ejs")
 }
-module.exports.eventRegistration = (req, res) => {
+module.exports.past = (req, res) => {
     res.render("events/pastevents.ejs")
 }
