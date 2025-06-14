@@ -12,7 +12,7 @@ const eventsControllers = require("../controllers/events")
 
 router.get("/events-upcoming",  eventsControllers.upcoming );
 
-router.get("/events-registration", isLoggedIn, eventsControllers.eventRegistration)
+router.get("/events-registration", eventsControllers.eventRegistration)
 
 
 router.get("/events-past", eventsControllers.past)
