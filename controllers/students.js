@@ -33,13 +33,13 @@ module.exports.postRegistration = async (req, res, next) => {
 
     const validStudent = await StudentList.findOne({ username });
     if (!validStudent) {
-      req.flash("error", "Username Not Found!! Please Contact Us and Get Your User Name");
+      req.flash("error", "User ID Not Found!! Please Contact Us and Get Your User Name");
       return res.redirect("/signup");
     }
 
     const existingStudent = await Student.findOne({ username });
     if (existingStudent) {
-      req.flash("error", "Username already registered. Please Contact Us and Get Your New User Name ");
+      req.flash("error", "User ID already registered. Please Contact Us and Get Your New User Name ");
       return res.redirect("/signup");
     }
 

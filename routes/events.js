@@ -10,7 +10,7 @@ const upcomingEvents = require("../models/upcomingEvents");
 const eventsControllers = require("../controllers/events")
 
 
-router.get("/events-upcoming",  eventsControllers.upcoming );
+router.get("/events-upcoming", isLoggedIn,  eventsControllers.upcoming );
 
 router.get("/events-registration", eventsControllers.eventRegistration)
 
