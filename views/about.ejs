@@ -42,7 +42,11 @@
   <!-- Responsive Card Grid -->
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
     <% const team = ["Sandeep Singh", "Akash Kumar", "Ankit Kumar", "Anjali Sahani", "Khushi Tripathi"]; %>
+<<<<<<< HEAD
     <% const teamimages = ["/images/sandeep.jpg", "/images/akash.jpg", "/images/Ankit.jpg", "/images/anjali.jpg", "/images/khushi.jpg"]; %>
+=======
+    <% const teamimages = ["/images/sandeep.jpg", "/images/ak.jpg", "/images/an.jpg", "/images/anjali.jpg", "/images/kh.jpg"]; %>
+>>>>>>> d31d409 (image rename)
     <% const profileurls = [
       "https://www.linkedin.com/in/code-warrior-sandeep", 
       "https://www.linkedin.com/in/akash-kumar-74up/", 
@@ -55,7 +59,7 @@
       <div class="col">
         <div class="card h-100 shadow-lg border-0 rounded-4">
           <img 
-            src="<%= teamimages[index] || 'https://via.placeholder.com/400x250' %>" 
+            src="<%= teamimages[index] || '/images/dummy.png' %>" 
             class="card-img-top rounded-top" 
             alt="<%= name %>"
             style="height: auto; max-height: 250px; object-fit: contain;"
